@@ -28,3 +28,5 @@ function saveIssue(e) {
   
   e.preventDefault(); 
 }
+
+document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
