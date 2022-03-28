@@ -1,3 +1,4 @@
 theme: jekyll-theme-hacker
-title: "ISSUE TRACKER"
-permalink: index.html
+domain: chunchunmaru.github.io
+url: https://chunchunmaru.github.io
+baseurl: /js-issue-tracker/
