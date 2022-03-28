@@ -49,11 +49,25 @@ function fetchIssues () {
                                 '<h3>' + desc + '</h3>'+
                                 '<p><span class="glyphicon glyphicon-time"></span> ' + severity + ' '+
                                 '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>'+
-                                '<a href="#" style="margin-right: 15px" class="btn btn-warning" onclick="setStatusClosed(\'{}id{}\')">Close</a>' +
-                                '<a href="#" style="margin-right: 15px" class="btn btn-danger" onclick="deleteIssue(\'id\')">Delete</a>' +
+                                '<a href="#" style="margin-right: 15px" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">Close</a>' +
+                                '<a href="#" style="margin-right: 15px" class="btn btn-danger" onclick="deleteIssue(\''+id+'\')">Delete</a>' +
                                 '</div>';
     }
   }
+}
+
+function setStatusClosed (id) {
+  var issues = JSON.parse(localStorage.getItem('issues'));
+  
+  for(var i = 0; i < issues.length; i++) {
+    if (issues[i].id == id) {
+      issues[i].status = "Closed";
+    }
+  }
+    
+  localStorage.setItem('issues', JSON.stringify(issues));
+  
+  fetchIssues();
 }
 
 document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
